@@ -58,7 +58,7 @@ public class Speed extends Module {
     private thunder.hack.utility.Timer startDelay = new thunder.hack.utility.Timer();
 
     public enum Mode {
-        StrictStrafe, MatrixJB, NCP, ElytraLowHop, MatrixDamage, GrimEntity, GrimEntity2, FireWork, Vanilla, GrimIce, GrimCombo
+        StrictStrafe, MatrixJB, NCP, ElytraLowHop, MatrixDamage, GrimEntity, GrimEntity2, FireWork, Vanilla, GrimIce, GrimCombo, ReallyWorld2
     }
 
     @Override
@@ -233,6 +233,25 @@ public class Speed extends Module {
                 if (shiftTicks.getValue() > 0) {
                     event.cancel();
                     event.setIterations(shiftTicks.getValue());
+                }
+            }
+        }
+    }
+
+                if (mode.getValue() == Mode.ReallyWorld2) {
+                    if (aaY.aLg()) {
+                    if ((double)Xz.dPS.player.aYm <= 0.1) {
+                        Xz.dPS.BS.cCC = 1.6f - aaY.aDa();
+                        Xz.dPS.player.ct(0.02f);
+                    } else if ((double)Xz.dPS.player.aYm < 1.3) {
+                        Xz.dPS.BS.cCC = 0.8f;
+                        Xz.dPS.player.ct(0.020408f);
+                    } else {
+                        Xz.dPS.BS.cCC = 1.0f;
+                    }
+                } else {
+                    Xz.dPS.player.ct(0.020408f);
+                    Xz.dPS.BS.cCC = 1.0f;
                 }
             }
         }
