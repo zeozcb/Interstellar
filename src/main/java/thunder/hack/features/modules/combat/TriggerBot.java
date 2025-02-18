@@ -20,6 +20,7 @@ public final class TriggerBot extends Module {
     public final Setting<Boolean> onlySpace = new Setting<>("OnlyCrit", false).addToGroup(smartCrit);
     public final Setting<Boolean> autoJump = new Setting<>("AutoJump", false).addToGroup(smartCrit);
     public final Setting<Boolean> ignoreWalls = new Setting<>("IgnoreWalls", false);
+    public final Setting<Boolean> ignoreInvisible = new Setting<>("IgnoreInvisible", false);
     public final Setting<Boolean> pauseEating = new Setting<>("PauseWhileEating", false);
     public final Setting<Integer> minDelay = new Setting<>("RandomDelayMin", 2, 0, 20);
     public final Setting<Integer> maxDelay = new Setting<>("RandomDelayMax", 13, 0, 20);
@@ -47,7 +48,7 @@ public final class TriggerBot extends Module {
             }
         }
 
-        Entity ent = Managers.PLAYER.getRtxTarget(mc.player.getYaw(), mc.player.getPitch(), attackRange.getValue(), ignoreWalls.getValue());
+        Entity ent = Managers.PLAYER.getRtxTarget(mc.player.getYaw(), mc.player.getPitch(), attackRange.getValue(), ignoreWalls.getValue(), ignoreInvisible.getValue());
         if (ent != null && !Managers.FRIEND.isFriend(ent.getName().getString())) {
             mc.interactionManager.attackEntity(mc.player, ent);
             mc.player.swingHand(Hand.MAIN_HAND);
